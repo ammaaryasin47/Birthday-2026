@@ -1,0 +1,153 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html, body {
+  margin: 0;
+  padding: 0;
+  background-color: #1a0a14;
+  color: #ffffff;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+html {
+  scroll-snap-type: y mandatory;
+}
+
+/* CONSOLIDATED GLOWS FOR THE FINAL THEME */
+
+/* 1. ROMANTIC NAME GLOW (Ishrat Title) */
+.glow-text {
+  /* CHANGE: Use a very pale pink so the letters "pop" against the dark background */
+  color: #fff1f2 !important; 
+  font-weight: 900;
+  position: relative;
+  
+  /* Webkit stroke can actually make glowy text look thinner/weaker. 
+     Try reducing it or removing it for a "softer" anime look. */
+  -webkit-text-stroke: 0.5px rgba(247, 53, 85, 0.3);
+  
+  /* THE SECRET: Layer a dark shadow FIRST to separate text from background, 
+     then your brand color, then the wide glow */
+  text-shadow: 
+    0 0 5px rgba(26, 10, 20, 1),      /* 1. Dark edge for sharpness */
+    0 0 10px #f73555,                /* 2. Your specific Red/Rose core */
+    0 0 20px rgba(247, 53, 85, 0.6), /* 3. Mid-glow */
+    0 0 40px rgba(251, 207, 232, 0.3); /* 4. Large pink atmospheric glow */
+  
+  animation: name-pulse 3s ease-in-out infinite;
+}
+
+/* --- TWINKLE --- */
+.animate-twinkle {
+  animation: twinkle linear infinite;
+}
+@keyframes twinkle {
+  0%, 100% { opacity: 0.1; transform: scale(0.8); }
+  50% { opacity: 0.7; transform: scale(1.2); box-shadow: 0 0 10px 1px rgba(255, 182, 193, 0.4); }
+}
+
+/* --- RECTANGULAR ANIME CAKE --- */
+.cake-container {
+  position: relative;
+  filter: drop-shadow(0 0 20px rgba(251, 207, 232, 0.2));
+}
+
+.cake-rect-tier {
+  background: linear-gradient(135deg, #fff5f7 0%, #fbcfe8 100%);
+  border: 1.5px solid rgba(244, 63, 94, 0.25);
+  position: relative;
+  /* Adds a slight 3D "box" perspective to the rectangle */
+  box-shadow: 
+    inset -5px -5px 15px rgba(244, 63, 94, 0.05),
+    5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Stylized Strawberry/Cream dollops on top */
+.cream-dollop {
+  width: 14px;
+  height: 14px;
+  background: #ffffff;
+  border-radius: 50% 50% 10% 10%;
+  filter: drop-shadow(0 2px 2px rgba(244, 63, 94, 0.1));
+}
+
+/* --- FLAME & BLOOM --- */
+.flame-bloom {
+  position: absolute;
+  inset: -15px;
+  background: radial-gradient(circle, #f43f5e 0%, transparent 75%);
+  mix-blend-mode: plus-lighter;
+  filter: blur(14px);
+}
+
+.anime-flame {
+  width: 10px;
+  height: 22px;
+  background: linear-gradient(to bottom, #ffffff, #fda4af, #f43f5e);
+  border-radius: 50% 50% 20% 20%;
+  animation: flame-wobble 0.4s ease-in-out infinite;
+  box-shadow: 0 0 15px #f43f5e;
+}
+
+@keyframes flame-wobble {
+  0%, 100% { transform: scaleY(1) rotate(0deg); }
+  50% { transform: scaleY(1.15) rotate(2deg); }
+}
+
+/* --- FINALE --- */
+.glow-text {
+  color: #fff !important; 
+  font-weight: 900;
+  text-shadow: 0 0 10px rgba(244, 63, 94, 1), 0 0 25px rgba(251, 207, 232, 0.7);
+}
+
+.snap-start {
+  scroll-snap-align: start;
+  height: 100vh;
+}
+.urdu-text {
+  font-family: 'Noto Nastaliq Urdu', serif;
+  direction: rtl;
+  line-height: 2.5; 
+  font-size: 1.8rem;
+}
+
+.english-text {
+  font-family: 'Playfair Display', serif;
+}
+
+/* Ensure sections take up full height for snapping */
+.snap-start {
+  scroll-snap-align: start;
+  height: 100vh;
+}
+
+/* STAR TWINKLE ANIMATION */
+.animate-twinkle {
+  animation: twinkle linear infinite;
+}
+
+@keyframes twinkle {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(1.2);
+    /* Gives a slight "glow" when at peak brightness */
+    box-shadow: 0 0 8px 1px rgba(255, 182, 193, 0.6);
+  }
+}
+
+/* Optional: Add a very slow drift to the background */
+.stars-container {
+  animation: backgroundDrift 100s linear infinite;
+}
+
+@keyframes backgroundDrift {
+  from { transform: translateY(0); }
+  to { transform: translateY(-100px); }
+}
